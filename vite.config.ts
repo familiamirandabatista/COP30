@@ -6,16 +6,24 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   
-  // 1. DIZ AO VITE ONDE ESTÁ O 'index.html'
-  //    Agora está correto, usando 'client'
+  // 1. ONDE ESTÁ O 'index.html' (Correto)
   root: path.resolve(__dirname, 'client'),
 
-  // 2. DIZ AO VITE ONDE SALVAR O BUILD
-  //    Isto já estava correto (salvando em 'SuaAjuda/dist')
+  // 2. ONDE SALVAR O BUILD (Corrigido)
   build: {
-    outDir: path.resolve(__dirname, 'dist')
+    outDir: path.resolve(__dirname, 'dist'),
+    // Adiciona esta linha para corrigir o aviso e limpar a pasta 'dist'
+    emptyOutDir: true,
   },
   
-  // 3. ISSO JÁ ESTAVA CORRETO (PARA O GITHUB PAGES)
+  // 3. 'base' PARA O GITHUB PAGES (Correto)
   base: '/COP30/',
+
+  // 4. ADICIONADO: Diz ao Vite o que '@/' significa
+  resolve: {
+    alias: {
+      // O atalho '@' aponta para a pasta 'client/src'
+      '@': path.resolve(__dirname, 'client/src'),
+    },
+  },
 })
