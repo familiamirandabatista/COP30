@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router } from "wouter"; // 1. Importei o 'Router'
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,7 +7,8 @@ import NotFound from "@/pages/not-found";
 
 import Home from "@/pages/home";
 
-function Router() {
+// A sua função 'Router' (que eu renomeei para 'AppRoutes' para evitar confusão)
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Home}/>
@@ -21,7 +22,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        {/* 2. Adicionei o Router 'base' aqui, "envelopando" suas rotas */}
+        <Router base="/COP30">
+          <AppRoutes /> {/* Chamei a função renomeada aqui */}
+        </Router>
       </TooltipProvider>
     </QueryClientProvider>
   );
