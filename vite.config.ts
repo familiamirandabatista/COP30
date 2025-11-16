@@ -19,13 +19,13 @@ export default defineConfig({
   // 3. 'base' PARA O GITHUB PAGES (Correto)
   base: '/COP30/',
 
-  // 4. ATUALIZADO: Diz ao Vite o que '@/' e '@assets' significam
+  // 4. ATUALIZADO: Corrige os aliases
   resolve: {
     alias: {
       // O atalho '@' aponta para a pasta 'client/src'
       '@': path.resolve(__dirname, 'client/src'),
-      // ADICIONADO: O atalho '@assets' provavelmente aponta para 'client/src/assets'
-      '@assets': path.resolve(__dirname, 'client/src/assets'),
+      // ATUALIZADO: O atalho '@assets' aponta para 'attached_assets'
+      '@assets': path.resolve(__dirname, 'attached_assets'),
     },
   },
 })
